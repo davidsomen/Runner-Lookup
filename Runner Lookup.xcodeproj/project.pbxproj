@@ -13,6 +13,12 @@
 		631AB6A41B8CEB560008D2C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 631AB6A31B8CEB560008D2C6 /* Images.xcassets */; };
 		631AB6A71B8CEB560008D2C6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 631AB6A51B8CEB560008D2C6 /* LaunchScreen.xib */; };
 		631AB6B31B8CEB560008D2C6 /* Runner_LookupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AB6B21B8CEB560008D2C6 /* Runner_LookupTests.swift */; };
+		631AB6BD1B8D12410008D2C6 /* Runner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AB6BC1B8D12410008D2C6 /* Runner.swift */; };
+		631AB6BF1B8D17900008D2C6 /* RunnerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AB6BE1B8D17900008D2C6 /* RunnerList.swift */; };
+		631AB6C11B8D17AF0008D2C6 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AB6C01B8D17AF0008D2C6 /* FileManager.swift */; };
+		631AB6C31B8DA8D10008D2C6 /* RunnerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AB6C21B8DA8D10008D2C6 /* RunnerErrors.swift */; };
+		631AB6C81B8FAD390008D2C6 /* RunnerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AB6C71B8FAD390008D2C6 /* RunnerTableViewController.swift */; };
+		638CE48E1B9068AE0049BE28 /* RunnerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638CE48D1B9068AE0049BE28 /* RunnerTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,12 @@
 		631AB6AC1B8CEB560008D2C6 /* Runner LookupTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Runner LookupTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		631AB6B11B8CEB560008D2C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		631AB6B21B8CEB560008D2C6 /* Runner_LookupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runner_LookupTests.swift; sourceTree = "<group>"; };
+		631AB6BC1B8D12410008D2C6 /* Runner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runner.swift; sourceTree = "<group>"; };
+		631AB6BE1B8D17900008D2C6 /* RunnerList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunnerList.swift; sourceTree = "<group>"; };
+		631AB6C01B8D17AF0008D2C6 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		631AB6C21B8DA8D10008D2C6 /* RunnerErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunnerErrors.swift; sourceTree = "<group>"; };
+		631AB6C71B8FAD390008D2C6 /* RunnerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunnerTableViewController.swift; sourceTree = "<group>"; };
+		638CE48D1B9068AE0049BE28 /* RunnerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunnerTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +91,12 @@
 			children = (
 				631AB69C1B8CEB560008D2C6 /* AppDelegate.swift */,
 				631AB69E1B8CEB560008D2C6 /* ViewController.swift */,
+				631AB6C71B8FAD390008D2C6 /* RunnerTableViewController.swift */,
+				631AB6BC1B8D12410008D2C6 /* Runner.swift */,
+				631AB6BE1B8D17900008D2C6 /* RunnerList.swift */,
+				631AB6C01B8D17AF0008D2C6 /* FileManager.swift */,
+				631AB6C21B8DA8D10008D2C6 /* RunnerErrors.swift */,
+				638CE48D1B9068AE0049BE28 /* RunnerTextField.swift */,
 				631AB6A01B8CEB560008D2C6 /* Main.storyboard */,
 				631AB6A31B8CEB560008D2C6 /* Images.xcassets */,
 				631AB6A51B8CEB560008D2C6 /* LaunchScreen.xib */,
@@ -156,11 +174,13 @@
 		631AB68F1B8CEB560008D2C6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "David Somen";
 				TargetAttributes = {
 					631AB6961B8CEB560008D2C6 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = TBSTK984R6;
 					};
 					631AB6AB1B8CEB560008D2C6 = {
 						CreatedOnToolsVersion = 6.4;
@@ -212,8 +232,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				631AB6BD1B8D12410008D2C6 /* Runner.swift in Sources */,
+				631AB6C11B8D17AF0008D2C6 /* FileManager.swift in Sources */,
+				631AB6C31B8DA8D10008D2C6 /* RunnerErrors.swift in Sources */,
+				638CE48E1B9068AE0049BE28 /* RunnerTextField.swift in Sources */,
 				631AB69F1B8CEB560008D2C6 /* ViewController.swift in Sources */,
+				631AB6C81B8FAD390008D2C6 /* RunnerTableViewController.swift in Sources */,
 				631AB69D1B8CEB560008D2C6 /* AppDelegate.swift in Sources */,
+				631AB6BF1B8D17900008D2C6 /* RunnerList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,9 +368,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Runner Lookup/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -352,9 +382,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Runner Lookup/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -411,6 +445,7 @@
 				631AB6B81B8CEB560008D2C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		631AB6B91B8CEB560008D2C6 /* Build configuration list for PBXNativeTarget "Runner LookupTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +454,7 @@
 				631AB6BB1B8CEB560008D2C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
