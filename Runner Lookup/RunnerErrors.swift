@@ -6,12 +6,10 @@
 //  Copyright (c) 2015 David Somen. All rights reserved.
 //
 
-let RunnerErrorDomain = "com.David-Somen.Runner-Lookup.ErrorDomain"
-
-enum RunnerErrorType: Int
+enum RunnerError: Error
 {
-    case FileNotFound
-    case NoRunnerData
-    case NotEnoughData
-    case NotNumber
+    case fileNotFound
+    case noRunnerData
+    case notEnoughData
+    case notNumber
 }

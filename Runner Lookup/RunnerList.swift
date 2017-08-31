@@ -10,27 +10,27 @@ import UIKit
 
 class RunnerList
 {
-    private let _fileManager = FileManager()
-    private var _runners: [Runner]
+    fileprivate let _fileManager = RLFileManager()
+    fileprivate var _runners = [Runner]()
     
     var total: Int
     {
         get
         {
-            return count(_runners)
+            return _runners.count
         }
     }
     
-    init(error: NSErrorPointer)
+    init() throws
     {
-        _runners = _fileManager.loadRunners(error)
+        _runners = try _fileManager.loadRunners()
     }
     
-    func find(number: Int) -> Runner?
+    func find(_ number: Int) -> Runner?
     {
         let filteredRunners = _runners.filter({ $0.number == number})
         
-        if count(filteredRunners) > 0
+        if filteredRunners.count > 0
         {
             return filteredRunners.first
         }

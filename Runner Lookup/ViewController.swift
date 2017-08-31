@@ -10,14 +10,17 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate
 {
-    private let kPrimaryColour = UIColor(red:0.0, green:0.63, blue:0.75, alpha:1.0)
-    private let kNotFoundColour = UIColor.redColor()
+    fileprivate let kPrimaryColour = UIColor.white
+    fileprivate let kSecondaryColour = UIColor(colorLiteralRed: 0.0, green: 0.63, blue: 0.75, alpha: 1.0)
+    fileprivate let kNotFoundColour = UIColor.red
+    fileprivate let kCommentViewCornerRadius: CGFloat = 5
+    fileprivate let kAnimationDuration = 0.3
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var clubLabel: UILabel!
-    @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var commentView: UIView!
     
     var runnerList: RunnerList!
     
@@ -25,130 +28,136 @@ class ViewController: UIViewController, UITextFieldDelegate
     {
         super.viewDidLoad()
         
-        setupView()
-        loadRunnerList()
+        commentView.layer.cornerRadius = kCommentViewCornerRadius
     }
     
-    func setupView()
+    override func viewWillAppear(_ animated: Bool)
     {
-        //textField.inputAccessoryView = toolbar
+        super.viewWillAppear(animated)
+        
+        clear()
     }
-    
-    override func viewDidAppear(animated: Bool)
+
+    override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
         
-        textField.becomeFirstResponder()
+        loadRunnerList()
+        
+        if runnerList != nil
+        {
+            showImportMessage()
+        }
     }
     
     func loadRunnerList()
     {
-        var error: NSError?
-        
-        runnerList = RunnerList(error: &error)
-        
-        if let error = error
+        do
         {
-            //showError(error)
+            runnerList = try RunnerList()
         }
-        else
+        catch RunnerError.noRunnerData
         {
-            //showImportMessage()
-            
-            clear()
+            showError(message: "The CSV file contains no runner data")
         }
-        
-        infoLabel.text = String(runnerList.total) + " RUNNERS LOADED"
+        catch RunnerError.notNumber
+        {
+            showError(message: "The CSV file contains a runner with an invalid number")
+        }
+        catch RunnerError.notEnoughData
+        {
+            showError(message: "The CSV file does not contain enough data per runner")
+        }
+        catch RunnerError.fileNotFound
+        {
+            showError(message: "The file \"runnerdata.csv\" was not found in the documents directory")
+        }
+        catch
+        {
+            showError(message: error.localizedDescription)
+        }
     }
     
-    /*
-    func showError(error: NSError)
+    func showError(message: String)
     {
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .Alert)
-        presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        present(alert, animated: true, completion: nil)
     }
     
     func showImportMessage()
     {
-        let message = String(runnerList.total) + " runners have been loaded"
-        let alert = UIAlertController(title: "File Load Succesful", message: message, preferredStyle: .Alert)
+        let message = String(runnerList.total) + " runners found"
+        let alert = UIAlertController(title: "Load Succesful", message: message, preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "OK", style: .Default)
+        let action = UIAlertAction(title: "GO!", style: .default)
         {
             alert in
             
-            self.clear()
             self.textField.becomeFirstResponder()
         }
         
         alert.addAction(action)
         
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
-    */
-
-    /*
-    @IBAction func nextButtonPressed()
-    {
-        textField.text = ""
-        clear()
-    }
-    */
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
-        let numberCharacterSet = NSCharacterSet(charactersInString: "0123456789")
-        let textCharacterSet = NSCharacterSet(charactersInString: string)
-        
-        let isNumber = numberCharacterSet.isSupersetOfSet(textCharacterSet);
-        
         if string == ""
         {
             textField.text = ""
             clear()
         }
         
-        return isNumber && count(textField.text) < 4
+        return Int(string) != nil && textField.text!.characters.count < 4
     }
     
     @IBAction func textFieldChanged()
     {
-        if let number = textField.text.toInt()
+        if let number = Int(textField.text!)
         {
             if let runner = runnerList.find(number)
             {
+                textField.textColor = kSecondaryColour
+                
                 nameLabel.text = runner.name
                 nameLabel.textColor = kPrimaryColour
-                
                 clubLabel.text = runner.club
+                commentLabel.text = runner.comment
                 
+                animateView(view: nameLabel, text: runner.name)
+                animateView(view: clubLabel, text: runner.club)
+                animateView(view: commentView, text: runner.comment)
+            
                 return
+            }
+            else
+            {
+                textField.textColor = kNotFoundColour
             }
         }
         
         clear()
     }
     
-    private func clear()
+    private func animateView(view: UIView, text: String)
     {
-        if count(textField.text) > 0
-        {
-            nameLabel.text = "No runner found"
-            nameLabel.textColor = kNotFoundColour
-        }
-        else
-        {
-            nameLabel.text = "Lookup runner number"
-            nameLabel.textColor = kPrimaryColour
-        }
-        
-        clubLabel.text = ""
+        //UIView.animate(withDuration: kAnimationDuration)
+        //{
+            view.isHidden = text.characters.count == 0
+        //}
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    fileprivate func clear()
     {
-        let navController = segue.destinationViewController as! UINavigationController
-        let viewController = navController.viewControllers.first as! RunnerTableViewController
-        viewController.runnerList = runnerList
+        nameLabel.text = ""
+        clubLabel.text = ""
+        commentLabel.text = ""
+        
+        //UIView.animate(withDuration: kAnimationDuration)
+        //{
+            self.commentView.isHidden = true
+            self.clubLabel.isHidden = true
+        //}
     }
 }

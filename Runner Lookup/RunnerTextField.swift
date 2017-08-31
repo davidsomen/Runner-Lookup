@@ -18,8 +18,8 @@ class RunnerTextField: UITextField
         layer.cornerRadius = frame.height/2 - 3
     }
     
-    override func caretRectForPosition(position: UITextPosition!) -> CGRect
+    override func caretRect(for position: UITextPosition) -> CGRect
     {
-        return CGRectZero
+        return CGRect.zero
     }
 }

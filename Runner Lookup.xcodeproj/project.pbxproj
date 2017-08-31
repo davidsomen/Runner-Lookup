@@ -15,9 +15,8 @@
 		631AB6B31B8CEB560008D2C6 /* Runner_LookupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AB6B21B8CEB560008D2C6 /* Runner_LookupTests.swift */; };
 		631AB6BD1B8D12410008D2C6 /* Runner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AB6BC1B8D12410008D2C6 /* Runner.swift */; };
 		631AB6BF1B8D17900008D2C6 /* RunnerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AB6BE1B8D17900008D2C6 /* RunnerList.swift */; };
-		631AB6C11B8D17AF0008D2C6 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AB6C01B8D17AF0008D2C6 /* FileManager.swift */; };
+		631AB6C11B8D17AF0008D2C6 /* RLFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AB6C01B8D17AF0008D2C6 /* RLFileManager.swift */; };
 		631AB6C31B8DA8D10008D2C6 /* RunnerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AB6C21B8DA8D10008D2C6 /* RunnerErrors.swift */; };
-		631AB6C81B8FAD390008D2C6 /* RunnerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AB6C71B8FAD390008D2C6 /* RunnerTableViewController.swift */; };
 		638CE48E1B9068AE0049BE28 /* RunnerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638CE48D1B9068AE0049BE28 /* RunnerTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,9 +43,8 @@
 		631AB6B21B8CEB560008D2C6 /* Runner_LookupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runner_LookupTests.swift; sourceTree = "<group>"; };
 		631AB6BC1B8D12410008D2C6 /* Runner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runner.swift; sourceTree = "<group>"; };
 		631AB6BE1B8D17900008D2C6 /* RunnerList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunnerList.swift; sourceTree = "<group>"; };
-		631AB6C01B8D17AF0008D2C6 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		631AB6C01B8D17AF0008D2C6 /* RLFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLFileManager.swift; sourceTree = "<group>"; };
 		631AB6C21B8DA8D10008D2C6 /* RunnerErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunnerErrors.swift; sourceTree = "<group>"; };
-		631AB6C71B8FAD390008D2C6 /* RunnerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunnerTableViewController.swift; sourceTree = "<group>"; };
 		638CE48D1B9068AE0049BE28 /* RunnerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunnerTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,10 +89,9 @@
 			children = (
 				631AB69C1B8CEB560008D2C6 /* AppDelegate.swift */,
 				631AB69E1B8CEB560008D2C6 /* ViewController.swift */,
-				631AB6C71B8FAD390008D2C6 /* RunnerTableViewController.swift */,
 				631AB6BC1B8D12410008D2C6 /* Runner.swift */,
 				631AB6BE1B8D17900008D2C6 /* RunnerList.swift */,
-				631AB6C01B8D17AF0008D2C6 /* FileManager.swift */,
+				631AB6C01B8D17AF0008D2C6 /* RLFileManager.swift */,
 				631AB6C21B8DA8D10008D2C6 /* RunnerErrors.swift */,
 				638CE48D1B9068AE0049BE28 /* RunnerTextField.swift */,
 				631AB6A01B8CEB560008D2C6 /* Main.storyboard */,
@@ -175,15 +172,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "David Somen";
 				TargetAttributes = {
 					631AB6961B8CEB560008D2C6 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = TBSTK984R6;
+						LastSwiftMigration = 0830;
 					};
 					631AB6AB1B8CEB560008D2C6 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0830;
 						TestTargetID = 631AB6961B8CEB560008D2C6;
 					};
 				};
@@ -233,11 +232,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				631AB6BD1B8D12410008D2C6 /* Runner.swift in Sources */,
-				631AB6C11B8D17AF0008D2C6 /* FileManager.swift in Sources */,
+				631AB6C11B8D17AF0008D2C6 /* RLFileManager.swift in Sources */,
 				631AB6C31B8DA8D10008D2C6 /* RunnerErrors.swift in Sources */,
 				638CE48E1B9068AE0049BE28 /* RunnerTextField.swift in Sources */,
 				631AB69F1B8CEB560008D2C6 /* ViewController.swift in Sources */,
-				631AB6C81B8FAD390008D2C6 /* RunnerTableViewController.swift in Sources */,
 				631AB69D1B8CEB560008D2C6 /* AppDelegate.swift in Sources */,
 				631AB6BF1B8D17900008D2C6 /* RunnerList.swift in Sources */,
 			);
@@ -294,14 +292,17 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -317,7 +318,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -339,8 +340,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -356,9 +359,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -371,10 +375,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Runner Lookup/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.david-somen.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -385,10 +391,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Runner Lookup/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.david-somen.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -406,7 +414,9 @@
 				);
 				INFOPLIST_FILE = "Runner LookupTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "david-somen.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner Lookup.app/Runner Lookup";
 			};
 			name = Debug;
@@ -421,7 +431,9 @@
 				);
 				INFOPLIST_FILE = "Runner LookupTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "david-somen.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner Lookup.app/Runner Lookup";
 			};
 			name = Release;
