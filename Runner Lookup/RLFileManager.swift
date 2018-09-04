@@ -1,11 +1,3 @@
-//
-//  RLFileManager.swift
-//  Runner Lookup
-//
-//  Created by David Somen on 25/08/2015.
-//  Copyright (c) 2015 David Somen. All rights reserved.
-//
-
 import UIKit
 
 class RLFileManager
@@ -32,21 +24,21 @@ class RLFileManager
             let string = try! String(contentsOfFile: file, encoding: String.Encoding.utf8)
             let array = string.components(separatedBy:"\r\n")
             
-            if array.count == 0
+            if array.isEmpty
             {
                 throw RunnerError.noRunnerData
             }
             
             for runnerData in array
             {
-                if runnerData == ""
+                if runnerData.isEmpty
                 {
                     continue
                 }
                 
                 let array = runnerData.components(separatedBy:",")
                 
-                if array[0] == ""
+                if array.first!.isEmpty
                 {
                     continue
                 }
@@ -64,7 +56,7 @@ class RLFileManager
                     }
                     else
                     {
-                        if array[0] != "Number"
+                        if array.first != "Number"
                         {
                             throw RunnerError.notNumber
                         }
@@ -86,8 +78,8 @@ class RLFileManager
     
     private func capitalizeFirstLetter(string: String) -> String
     {
-        let first = String(string.characters.prefix(1)).capitalized
-        let other = String(string.characters.dropFirst())
+        let first = String(string.prefix(1)).capitalized
+        let other = String(string.dropFirst())
         
         return first + other
     }

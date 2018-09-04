@@ -1,17 +1,9 @@
-//
-//  ViewController.swift
-//  Runner Lookup
-//
-//  Created by David Somen on 25/08/2015.
-//  Copyright (c) 2015 David Somen. All rights reserved.
-//
-
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate
+class ViewController: UIViewController, UITextFieldDelegate, UIDocumentPickerDelegate
 {
     fileprivate let kPrimaryColour = UIColor.white
-    fileprivate let kSecondaryColour = UIColor(colorLiteralRed: 0.0, green: 0.63, blue: 0.75, alpha: 1.0)
+    fileprivate let kSecondaryColour = UIColor(red: 0.0, green: 0.63, blue: 0.75, alpha: 1.0)
     fileprivate let kNotFoundColour = UIColor.red
     fileprivate let kCommentViewCornerRadius: CGFloat = 5
     fileprivate let kAnimationDuration = 0.3
@@ -29,6 +21,8 @@ class ViewController: UIViewController, UITextFieldDelegate
         super.viewDidLoad()
         
         commentView.layer.cornerRadius = kCommentViewCornerRadius
+        
+        runnerList = RunnerList()
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -42,40 +36,7 @@ class ViewController: UIViewController, UITextFieldDelegate
     {
         super.viewDidAppear(animated)
         
-        loadRunnerList()
-        
-        if runnerList != nil
-        {
-            showImportMessage()
-        }
-    }
-    
-    func loadRunnerList()
-    {
-        do
-        {
-            runnerList = try RunnerList()
-        }
-        catch RunnerError.noRunnerData
-        {
-            showError(message: "The CSV file contains no runner data")
-        }
-        catch RunnerError.notNumber
-        {
-            showError(message: "The CSV file contains a runner with an invalid number")
-        }
-        catch RunnerError.notEnoughData
-        {
-            showError(message: "The CSV file does not contain enough data per runner")
-        }
-        catch RunnerError.fileNotFound
-        {
-            showError(message: "The file \"runnerdata.csv\" was not found in the documents directory")
-        }
-        catch
-        {
-            showError(message: error.localizedDescription)
-        }
+        load()
     }
     
     func showError(message: String)
@@ -109,7 +70,7 @@ class ViewController: UIViewController, UITextFieldDelegate
             clear()
         }
         
-        return Int(string) != nil && textField.text!.characters.count < 4
+        return Int(string) != nil && textField.text!.count < 4
     }
     
     @IBAction func textFieldChanged()
@@ -144,7 +105,7 @@ class ViewController: UIViewController, UITextFieldDelegate
     {
         //UIView.animate(withDuration: kAnimationDuration)
         //{
-            view.isHidden = text.characters.count == 0
+            view.isHidden = text.isEmpty
         //}
     }
     
@@ -159,5 +120,46 @@ class ViewController: UIViewController, UITextFieldDelegate
             self.commentView.isHidden = true
             self.clubLabel.isHidden = true
         //}
+    }
+    
+//    @IBAction func openButtonPressed(_ sender: Any)
+//    {
+//        let viewController = UIDocumentPickerViewController(documentTypes: ["public.comma-separated-values-text"], in: .import)
+//        viewController.delegate = self
+//
+//        present(viewController, animated: true)
+//    }
+    
+    func load()
+    {
+        do
+        {
+            try runnerList.load()
+        }
+        catch RunnerError.noRunnerData
+        {
+            showError(message: "The CSV file contains no runner data")
+        }
+        catch RunnerError.notNumber
+        {
+            showError(message: "The CSV file contains a runner with an invalid number")
+        }
+        catch RunnerError.notEnoughData
+        {
+            showError(message: "The CSV file does not contain enough data per runner")
+        }
+        catch RunnerError.fileNotFound
+        {
+            showError(message: "No CSV file named 'data' was found. Please connect to a computer and add the file using iTunes")
+        }
+        catch
+        {
+            showError(message: error.localizedDescription)
+        }
+        
+        if runnerList != nil
+        {
+            showImportMessage()
+        }
     }
 }

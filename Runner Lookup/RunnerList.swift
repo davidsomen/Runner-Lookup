@@ -1,11 +1,3 @@
-//
-//  RunnerManager.swift
-//  Runner Lookup
-//
-//  Created by David Somen on 25/08/2015.
-//  Copyright (c) 2015 David Somen. All rights reserved.
-//
-
 import UIKit
 
 class RunnerList
@@ -21,7 +13,7 @@ class RunnerList
         }
     }
     
-    init() throws
+    func load() throws
     {
         _runners = try _fileManager.loadRunners()
     }
